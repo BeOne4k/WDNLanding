@@ -40,48 +40,7 @@
     });
   }
 
-  // ── Ripple effect on card tap ───────────────
-  function initRipple() {
-    const cards = document.querySelectorAll('.step-card');
 
-    cards.forEach((card) => {
-      card.addEventListener('pointerdown', function (e) {
-        const existing = card.querySelector('.ripple');
-        if (existing) existing.remove();
-
-        const rect = card.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height) * 1.5;
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        Object.assign(ripple.style, {
-          position:      'absolute',
-          width:         size + 'px',
-          height:        size + 'px',
-          left:          x + 'px',
-          top:           y + 'px',
-          background:    'rgba(26, 92, 48, 0.08)',
-          borderRadius:  '50%',
-          transform:     'scale(0)',
-          transition:    'transform 0.5s ease, opacity 0.5s ease',
-          pointerEvents: 'none',
-          zIndex:        '0',
-        });
-
-        card.style.overflow = 'hidden';
-        card.appendChild(ripple);
-
-        requestAnimationFrame(() => {
-          ripple.style.transform = 'scale(1)';
-          ripple.style.opacity = '0';
-        });
-
-        ripple.addEventListener('transitionend', () => ripple.remove());
-      });
-    });
-  }
 
   // ── Animate header logo on load ────────────
   function initLogoAnimation() {
@@ -118,8 +77,7 @@
   // ── Init ───────────────────────────────────
   function init() {
     initLogoAnimation();
-    initScrollReveal();
-    initRipple();
+    initScrollReveal();;
   }
 
   if (document.readyState === 'loading') {
