@@ -45,6 +45,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   color: $brown;
+  background: url("/assets/leaves-bg.svg");
+  background-size: 430px;
+  background-position: center center;
 }
 
 .header {
@@ -164,18 +167,28 @@ body {
 .steps-grid {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
   position: relative;
   z-index: 1;
 }
 
 .steps-row {
   display: flex;
-  gap: 14px;
+  gap: 6px;
   align-items: stretch;
   justify-content: center;
+  .short-arrow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
+.long-arrow{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 .step-card {
   flex: 0 0 160px;
   aspect-ratio: 1 / 1;
@@ -195,6 +208,8 @@ body {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 
   overflow: visible;
+  
+  box-shadow: 4px 4px 5px -1px #000000;
 }
 
 .steps-row:nth-of-type(2) .step-card:nth-child(2) .step-desc {
