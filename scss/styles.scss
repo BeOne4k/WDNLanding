@@ -1,4 +1,3 @@
-
 $green-dark:   #155D2F;
 $green-mid:    #206e39;
 $green-light:  #2a8a47;
@@ -45,7 +44,7 @@ $radius-badge: 8px;
 }
 
 body {
-  font-family: $font-body;
+  font-family: 'MyFont', sans-serif;
   background-color: $cream-light;
   max-width: $mobile-max;
   margin: 0 auto;
@@ -55,7 +54,6 @@ body {
   background: url("/assets/leaves-bg.svg");
   background-size: 430px;
   background-position: center center;
-  font-family: 'MyFont', sans-serif;
 }
 
 .header {
@@ -66,7 +64,6 @@ body {
   overflow: hidden;
   border-radius: 0 0 50% 50% / 0 0 20px 20px;
   z-index: 1;
-
 }
 
 .logo-wrapper,
@@ -127,12 +124,10 @@ body {
   }
 }
 
-
 .divider-line {
   @include flex-center;
   gap: 10px;
   margin: 10px 0 8px;
-
   color: $gold-light;
   font-size: 13px;
   letter-spacing: 1px;
@@ -157,14 +152,17 @@ body {
   }
 }
 
-
 .content {
   padding: 24px 18px 40px;
-  background: $cream-light;
   position: relative;
   background: $cream-light url("/assets/leaves-bg-huge.svg") center center / 750px no-repeat;
-  height: 107vh;  
+  min-height: calc(100vh - 80px);
   margin-top: -20px;
+  background-attachment: local;
+
+  @media (max-width: 360px) {
+    padding: 24px 10px 40px;
+  }
 }
 
 .bg-leaf {
@@ -189,79 +187,58 @@ body {
   gap: 6px;
   align-items: stretch;
   justify-content: center;
-  .short-arrow{
+  width: 100%;
+
+  .short-arrow {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-shrink: 0;
   }
 }
 
-.long-arrow{
+.long-arrow {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 }
+
 .step-card {
   font-family: 'MyFont', sans-serif;
-  flex: 0 0 170px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 170px;
   aspect-ratio: 1 / 1;
-
   background: $white;
   border-radius: $radius-card;
-
-  @include card-shadow;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   position: relative;
   border: 1.5px solid rgba($green-dark, 0.07);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-
   overflow: visible;
-
-
-  
   box-shadow: 4px 4px 5px -1px #000000;
 }
 
-/* =========================
-   STEP 1
-========================= */
 .steps-row:nth-of-type(1) .step-card:nth-of-type(1) .step-icon img {
   transform: translateY(10px);
 }
 
-/* =========================
-   STEP 2
-========================= */
 .steps-row:nth-of-type(1) .step-card:nth-of-type(2) .step-icon img {
   transform: translate(-5px, 10px) scale(1.2);
 }
 
-/* =========================
-   STEP 3 (коррекция текста)
-========================= */
-
-//step3
 .steps-row:nth-of-type(3) .step-card:nth-of-type(1) .step-icon img {
   transform: translate(3px, 15px) scale(1.2);
-  
 }
 
-/* =========================
-   STEP 4 (коррекция текста)
-========================= */
 .steps-row:nth-of-type(2) .step-card:nth-of-type(2) .step-desc {
   margin-bottom: 5px;
   transform: translate(5px, 16px);
 }
 
-/* =========================
-   STEP 5
-========================= */
 .steps-row:nth-of-type(5) .step-card:nth-of-type(1) .step-icon img {
   transform: translate(5px, 10px);
 }
@@ -270,41 +247,46 @@ body {
   transform: translate(-1px, 10px) scale(1.2);
 }
 
+.steps-grid > div:nth-child(3) .step-card:nth-of-type(2) .step-icon img {
+  transform: translateY(5px);
+}
+
 .step-badge {
   background: $green-dark;
   color: $white;
-  font-size: 13px;
+  font-size: clamp(9px, 3.5vw, 13px);
   font-weight: 800;
   letter-spacing: 0.5px;
-  padding: 5px 20px;
+  padding: clamp(3px, 1vw, 5px) clamp(10px, 4vw, 20px);
   border-radius: $radius-badge;
   position: absolute;
-  top: -15px;
+  top: -13px;
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
   border-bottom: 2px solid rgba(#000, 0.12);
-  width: 120px;
+  width: clamp(80px, 45%, 120px);
   display: flex;
   align-items: center;
   justify-content: center;
+
   &::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -7px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 8px solid $green-dark;
+    border-left: clamp(4px, 1.5vw, 7px) solid transparent;
+    border-right: clamp(4px, 1.5vw, 7px) solid transparent;
+    border-top: clamp(5px, 1.8vw, 8px) solid $green-dark;
   }
 }
 
 .step-icon {
-  margin-top: 28px;
-  width: 50%;
+  margin-top: clamp(20px, 6%, 28px);
+  width: 45%;
   max-width: 70px;
   max-height: 70px;
   @include flex-center;
@@ -317,24 +299,20 @@ body {
 }
 
 .step-desc {
-  margin-top: 10px;
-
-  font-size: 13px;
+  margin-top: clamp(4px, 2%, 10px);
+  font-size: clamp(9px, 3.2vw, 13px);
   font-weight: 700;
   line-height: 1.4;
   color: $brown;
-
   flex: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-align: center;
-
   word-break: break-word;
+  padding: 0 clamp(4px, 2%, 8px);
+    z-index: 2;
 }
-
 
 .cta-section {
   text-align: center;
@@ -345,13 +323,11 @@ body {
 }
 
 .cta-text {
-  font-family: $font-display;
+  font-family: 'MyFont', sans-serif;
   font-size: 28px;
-  font-weight: 900;
+  font-weight: 100;
   color: $brown;
   letter-spacing: 0.5px;
-  font-family: 'MyFont', sans-serif;
-  font-weight: 100;
 }
 
 .messenger-buttons {
@@ -380,22 +356,32 @@ body {
   letter-spacing: 0.3px;
   text-decoration: none;
   color: $white;
-  box-shadow: 4px 4px 5px -1px #000000; 
+  box-shadow: 4px 4px 5px -1px #000000;
   transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   outline: none;
 
-  &:active {
-    transform: translateY(2px);
-    box-shadow: 2px 2px 3px -1px #000000; 
-  }
-
-   &:focus {
+  &:focus {
     outline: none;
   }
 
-  &:hover { filter: brightness(1.07); }
+  &:hover {
+    filter: brightness(1.07);
+  }
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 3px -1px #000000;
+  }
 
   &--line { background: #06C755; }
   &--tg   { background: #229ED9; }
   &--wa   { background: $green-dark; }
+}
+
+.steps-row:nth-of-type(1) .step-card:nth-of-type(2) .step-icon img {
+  transform: translate(-5px, 10px) scale(1);
+}
+
+.steps-row:nth-of-type(5) .step-card:nth-of-type(2) .step-icon img {
+  transform: translate(-1px, 10px) scale(1.05);
 }
