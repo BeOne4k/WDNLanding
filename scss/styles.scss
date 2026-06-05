@@ -163,7 +163,7 @@ body {
   background: $cream-light;
   position: relative;
   background: $cream-light url("/assets/leaves-bg-huge.svg") center center / 750px no-repeat;
-  height: 100vh;  
+  height: 107vh;  
   margin-top: -20px;
 }
 
@@ -352,4 +352,50 @@ body {
   letter-spacing: 0.5px;
   font-family: 'MyFont', sans-serif;
   font-weight: 100;
+}
+
+.messenger-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 0 10px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.msg-btn {
+  font-family: 'MyFont', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  color: $white;
+  box-shadow: 4px 4px 5px -1px #000000; 
+  transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 3px -1px #000000; 
+  }
+
+   &:focus {
+    outline: none;
+  }
+
+  &:hover { filter: brightness(1.07); }
+
+  &--line { background: #06C755; }
+  &--tg   { background: #229ED9; }
+  &--wa   { background: $green-dark; }
 }
