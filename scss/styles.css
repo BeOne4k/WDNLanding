@@ -99,7 +99,7 @@ body {
 }
 
 .logo-text img {
-  height: 42px;
+  height: 120px;
   width: auto;
   display: block;
 }
@@ -447,6 +447,16 @@ body {
   outline: none;
 }
 
+.msg-btn--wa {
+  background: #e3eb69;
+  color: black;
+  text-shadow: none;
+}
+
+.msg-btn--wa svg path {
+  fill: black;
+}
+
 .msg-btn:focus {
   outline: none;
 }
@@ -464,15 +474,15 @@ body {
 }
 
 .msg-btn--line {
-  background: #06C755;
+  background: #155D2F;
 }
 
 .msg-btn--tg {
-  background: #229ED9;
+  background: #bb76cf;
 }
 
 .msg-btn--wa {
-  background: #155D2F;
+  background: #e3eb69;
 }
 
 .steps-row:nth-of-type(1) .step-card:nth-of-type(2) .step-icon img {
