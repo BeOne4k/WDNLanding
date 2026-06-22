@@ -495,3 +495,60 @@ body {
           transform: translate(-1px, 10px) scale(1.05);
 }
 /*# sourceMappingURL=styles.css.map */
+/* ── Language Switcher ────────────────────── */
+.lang-switcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background: #0f4522;
+  padding: 7px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  padding: 4px 14px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+
+/* divider between buttons */
+.lang-btn + .lang-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+}
+
+.lang-btn:hover {
+  color: rgba(255,255,255,0.85);
+}
+
+.lang-btn--active {
+  color: #fff;
+}
+
+.lang-btn--active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 2px;
+  background: #a8d5a2;
+  border-radius: 2px;
+}
